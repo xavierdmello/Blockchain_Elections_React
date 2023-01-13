@@ -16,7 +16,7 @@ export default function Main({ election, eda, afterTx }) {
     }
   }, [election]);
   
-  let title =""
+  let title ="a"
   let tableData = []
   if (electionData) {
     const { candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters } = electionData;
