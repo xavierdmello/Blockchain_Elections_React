@@ -33,7 +33,7 @@ export default function Main({ election, eda, afterTx }) {
   }
   return (
     <div className="Main">
-      <h1>{electionData && title}</h1>
+      <h1 className="electionTitle">{electionData && title}</h1>
 
       <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="600px">
         <Column field="rank" header="Rank"></Column>

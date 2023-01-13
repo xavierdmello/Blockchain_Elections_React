@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     setHasWeb3(window.ethereum ? true : false);
   });
-
+  console.log(account)
   // Set default election as the first one
   useEffect(() => {
     async function load() {
@@ -45,6 +45,7 @@ function App() {
   }, []);
 
   function handleAccount(account) {
+
     setAccount(account);
   }
 
@@ -58,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleAccount={handleAccount} />
+      <Header handleAccount={handleAccount} connectedAccount={account} />
       <div className="split">
         <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
         <hr />

@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { useEffect } from "react";
-import "../styles/Connect.css"
-export default function Connect({ handleAccount }) {
+import "../styles/Connect.css";
+export default function Connect({ handleAccount, connectedAccount }) {
   const hasWeb3 = window.ethereum ? true : false;
   let provider;
   if (hasWeb3) {
@@ -10,6 +10,7 @@ export default function Connect({ handleAccount }) {
 
   async function connect() {
     const accounts = await provider.send("eth_requestAccounts", []);
+
     handleAccountsChanged(accounts);
   }
 
@@ -31,8 +32,8 @@ export default function Connect({ handleAccount }) {
   return (
     <div>
       {!hasWeb3 && <p>"Please download wallet"</p>}
-      <button className="Connect glass button grow" onClick={hasWeb3 ? connect: undefined}>
-        Connect Wallet
+      <button className="Connect glass button grow" onClick={hasWeb3 ? connect : undefined}>
+        {connectedAccount ? `Connected: ${connectedAccount.address.slice(0, 5) + "..." + connectedAccount.address.slice(-5)}` : "Connect Wallet"}
       </button>
     </div>
   );

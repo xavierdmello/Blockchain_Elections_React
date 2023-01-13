@@ -64,8 +64,8 @@ b {
   width: 100%;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.175);
-  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 2%);
-  border: 1px solid white;
+  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 3%);
+  border: 1px solid rgba(255,255,255,0.2);
   font-weight: 500;
 }
 
@@ -74,5 +74,5 @@ b {
 }
 
 .grow:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
