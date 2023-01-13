@@ -8,3 +8,9 @@
     align-self: center;
     margin-bottom: 10px;;
 }
+
+.electionData {
+    border-radius: 10px;
+    overflow: hidden;
+}
+

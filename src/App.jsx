@@ -5,7 +5,9 @@ import "./styles/App.css";
 
 import edaAbi from "./abi/edaAbi";
 import emAbi from "./abi/emAbi";
-
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main"
@@ -55,14 +57,14 @@ function App() {
   }
 
   return (
-    <>
+    <div className="App">
       <Header handleAccount={handleAccount} />
       <div className="split">
         <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
         <hr />
         <Main election={election} eda={eda} afterTx={handleTx} />
       </div>
-    </>
+    </div>
   );
 }
 

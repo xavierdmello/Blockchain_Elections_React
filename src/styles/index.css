@@ -1,9 +1,15 @@
-html {
-  height: 100%;
-  padding-bottom: 200px;
+body {
+  min-height: 100vh;
+  overflow: auto;
+  margin-bottom: 200px;
   background-image: url(../assets/hero-top.jpg), url(../assets/hero-bottom.jpg);
   background-position: top, bottom;
   background-size: contain, contain;
   background-repeat: no-repeat, no-repeat;
   background-size: 100% auto, 100% auto;
+  background-attachment: fixed fixed;
+}
+
+* {
+  font-family: "Inter", sans-serif;
 }

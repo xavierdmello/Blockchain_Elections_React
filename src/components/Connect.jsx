@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { useEffect } from "react";
-
+import "../styles/Connect.css"
 export default function Connect({ handleAccount }) {
   const hasWeb3 = window.ethereum ? true : false;
   let provider;
@@ -31,8 +31,8 @@ export default function Connect({ handleAccount }) {
   return (
     <div>
       {!hasWeb3 && <p>"Please download wallet"</p>}
-      <button className="Connect" onClick={hasWeb3 ? connect: undefined}>
-        Connect
+      <button className="Connect glass button grow" onClick={hasWeb3 ? connect: undefined}>
+        Connect Wallet
       </button>
     </div>
   );

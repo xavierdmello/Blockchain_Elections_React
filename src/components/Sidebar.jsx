@@ -20,7 +20,7 @@ export default function Sidebar({ eda, emAddress, handleElection }) {
 
       return (
         <li key={address}>
-          <button onClick={() => handleElection(address)}>
+          <button className="button glass grow" onClick={() => handleElection(address)}>
             {name}
           </button>
         </li>

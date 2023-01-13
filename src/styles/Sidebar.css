@@ -11,7 +11,6 @@
     list-style-type: none;
     padding: 0px;
     margin: 0px;
-
 }
 
 .Sidebar > h1 {
@@ -21,6 +20,7 @@
  .Sidebar > ul > li {
     margin-bottom: 10px;
  }
+ 
 .Sidebar > ul > li > button > span{
   font-family: "Inter", sans-serif ;
 }
