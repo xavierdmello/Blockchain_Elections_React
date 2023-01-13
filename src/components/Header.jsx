@@ -7,7 +7,13 @@ import logo from "../assets/logo.png";
 export default function Header({handleAccount, connectedAccount}) {
   return (
     <div className="Header">
-      <img src={logo}></img>
+      <span className="right">
+        <img src={logo}></img>
+        <b>Vote</b>
+        <b>Run For Office</b>
+        <b>Manage Elections</b>
+      </span>
+
       <div className="web3buttons">
         <Connect handleAccount={handleAccount} connectedAccount={connectedAccount} />
       </div>

@@ -40,12 +40,12 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
 
   return (
     <div className="Main">
-      <div className="mainHeader">
+
         <h1 className="electionTitle">{electionData && title}</h1>
-        <button className="runForOfficeButton button glass" onClick={() => handleOffice(load)}>
+        {/* <button className="runForOfficeButton button glass" onClick={() => handleOffice(load)}>
           Run For Office
-        </button>
-      </div>
+        </button> */}
+
 
       <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="600px">
         <Column field="rank" header=""></Column>
