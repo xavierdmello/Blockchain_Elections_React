@@ -25,11 +25,12 @@ function App() {
   const [election, setElection] = useState();
 
   let provider;
-  if (hasWeb3) {
+  if (hasWeb3 && account) {
     provider = new ethers.providers.Web3Provider(window.ethereum);
   } else {
     provider = new ethers.providers.JsonRpcProvider(backupRpc);
   }
+  console.log(provider)
 
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
