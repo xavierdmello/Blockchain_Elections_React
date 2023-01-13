@@ -1,0 +1,10 @@
+.Main {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.Main > h1 {
+    align-self: center;
+    margin-bottom: 10px;;
+}
