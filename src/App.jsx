@@ -30,7 +30,6 @@ function App() {
   } else {
     provider = new ethers.providers.JsonRpcProvider(backupRpc);
   }
-  console.log(provider)
 
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
