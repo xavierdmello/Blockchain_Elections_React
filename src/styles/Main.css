@@ -12,9 +12,21 @@
 .electionData {
     border-radius: 10px;
     overflow: hidden;
+
+  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 3%);
+
+
 }
 
 .electionTitle {
     font-size: 23px;
 
+}
+
+.voteButton {
+    padding: 10px 20px;
+    box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 5%);
+    background-color: #860038;
+    color: white;
+    font-weight: 500;
 }

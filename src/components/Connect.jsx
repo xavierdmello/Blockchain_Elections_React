@@ -32,7 +32,7 @@ export default function Connect({ handleAccount, connectedAccount }) {
   return (
     <div>
       {!hasWeb3 && <p>"Please download wallet"</p>}
-      <button className="Connect glass button grow" onClick={hasWeb3 ? connect : undefined}>
+      <button className="Connect glass button" onClick={hasWeb3 ? connect : undefined}>
         {connectedAccount ? `Connected: ${connectedAccount.address.slice(0, 5) + "..." + connectedAccount.address.slice(-5)}` : "Connect Wallet"}
       </button>
     </div>

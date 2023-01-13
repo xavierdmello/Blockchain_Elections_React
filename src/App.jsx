@@ -5,8 +5,9 @@ import "./styles/App.css";
 
 import edaAbi from "./abi/edaAbi";
 import emAbi from "./abi/emAbi";
-import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
-import "primereact/resources/primereact.min.css";                  //core css
+import eAbi from "./abi/eAbi";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; 
+import "primereact/resources/primereact.min.css";                
 import "primeicons/primeicons.css";                                //icons
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -34,18 +35,18 @@ function App() {
   useEffect(() => {
     setHasWeb3(window.ethereum ? true : false);
   });
-  console.log(account)
+
+
   // Set default election as the first one
   useEffect(() => {
     async function load() {
       const elections = await eda.getElectionsBundledWithNames(emAddress);
-      setElection(elections[0].election);
+      setElection((elections[0].election));
     }
     load();
   }, []);
 
   function handleAccount(account) {
-
     setAccount(account);
   }
 
@@ -53,8 +54,15 @@ function App() {
     setElection(electionAddress);
   }
 
-  function handleTx() {
-    console.log("tx sent!");
+  async function handleVote(who, callback) {
+    if (account) {
+      const electionContract = new ethers.Contract(election, eAbi, provider.getSigner());
+      const tx = await electionContract.vote(who)
+      await tx.wait(1);
+      callback()
+    } else {
+      console.log("Please connect your wallet first.")
+    }
   }
 
   return (
@@ -63,7 +71,7 @@ function App() {
       <div className="split">
         <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
         <hr />
-        <Main election={election} eda={eda} afterTx={handleTx} />
+        <Main election={election} eda={eda} handleVote={handleVote} />
       </div>
     </div>
   );
