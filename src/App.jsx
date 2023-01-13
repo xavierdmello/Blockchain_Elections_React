@@ -17,7 +17,7 @@ const B = BigNumber;
 
 const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
 const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
-const defaultRpc = "wss://ava-testnet.blastapi.io/dbc28275-1991-489a-9861-f346087ac3a9/ext/bc/C/ws";
+const backupRpc = "https://api.avax-test.network/ext/bc/C/rpc";
 
 function App() {
   const [account, setAccount] = useState();
@@ -28,8 +28,9 @@ function App() {
   if (hasWeb3) {
     provider = new ethers.providers.Web3Provider(window.ethereum);
   } else {
-    provider = new ethers.providers.Web3Provider(new ethers.providers.WebSocketProvider(defaultRpc));
+    provider = new ethers.providers.JsonRpcProvider(backupRpc);
   }
+
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
   useEffect(() => {
