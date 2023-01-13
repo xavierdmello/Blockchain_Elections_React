@@ -6,12 +6,12 @@ import "./styles/App.css";
 import edaAbi from "./abi/edaAbi";
 import emAbi from "./abi/emAbi";
 import eAbi from "./abi/eAbi";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; 
-import "primereact/resources/primereact.min.css";                
-import "primeicons/primeicons.css";                                //icons
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css"; //icons
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Main from "./components/Main"
+import Main from "./components/Main";
 
 const B = BigNumber;
 
@@ -37,12 +37,11 @@ function App() {
     setHasWeb3(window.ethereum ? true : false);
   });
 
-
   // Set default election as the first one
   useEffect(() => {
     async function load() {
       const elections = await eda.getElectionsBundledWithNames(emAddress);
-      setElection((elections[0].election));
+      setElection(elections[0].election);
     }
     load();
   }, []);
@@ -58,12 +57,20 @@ function App() {
   async function handleVote(who, callback) {
     if (account) {
       const electionContract = new ethers.Contract(election, eAbi, provider.getSigner());
-      const tx = await electionContract.vote(who)
+      const tx = await electionContract.vote(who);
       await tx.wait(1);
-      callback()
+      callback();
     } else {
-      console.log("Please connect your wallet first.")
+      console.log("Please connect your wallet first.");
     }
+  }
+
+  async function handleOffice(callback) {
+    const electionContract = new ethers.Contract(election, eAbi, provider.getSigner());
+    // TODO: remove placeholder name
+    const tx = await electionContract.runForElection("John Doe", {value: ethers.utils.parseEther("0.05")});
+    await tx.wait(1);
+    callback();
   }
 
   return (
@@ -72,7 +79,7 @@ function App() {
       <div className="split">
         <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
         <hr />
-        <Main election={election} eda={eda} handleVote={handleVote} />
+        <Main election={election} eda={eda} handleVote={handleVote} handleOffice={handleOffice} />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import HoverAddress from "./HoverAddress";
 
-export default function Main({ election, eda, handleVote }) {
+export default function Main({ election, eda, handleVote, handleOffice }) {
   const [electionData, setElectionData] = useState();
 
   async function load() {
@@ -40,14 +40,19 @@ export default function Main({ election, eda, handleVote }) {
 
   return (
     <div className="Main">
-      <h1 className="electionTitle">{electionData && title}</h1>
+      <div className="mainHeader">
+        <h1 className="electionTitle">{electionData && title}</h1>
+        <button className="runForOfficeButton button glass" onClick={() => handleOffice(load)}>
+          Run For Office
+        </button>
+      </div>
 
       <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="600px">
         <Column field="rank" header=""></Column>
         <Column field="name" header="Name"></Column>
         <Column field="votes" header="Votes"></Column>
         <Column field="address" header="Address"></Column>
-        <Column field="vote" header=""></Column>
+        <Column field="vote"></Column>
       </DataTable>
     </div>
   );
