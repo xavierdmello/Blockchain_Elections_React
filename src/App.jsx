@@ -12,7 +12,7 @@ import "primeicons/primeicons.css"; //icons
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-
+import { useSigner, useProvider } from "wagmi";
 const B = BigNumber;
 
 const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
@@ -20,16 +20,11 @@ const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
 const backupRpc = "https://api.avax-test.network/ext/bc/C/rpc";
 
 function App() {
-  const [account, setAccount] = useState();
   const [hasWeb3, setHasWeb3] = useState(window.ethereum ? true : false);
   const [election, setElection] = useState();
-
-  let provider;
-  if (hasWeb3 && account) {
-    provider = new ethers.providers.Web3Provider(window.ethereum);
-  } else {
-    provider = new ethers.providers.JsonRpcProvider(backupRpc);
-  }
+  
+  const { data: signer, isError, isLoading } = useSigner();
+  const provider = useProvider();
 
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
@@ -46,27 +41,19 @@ function App() {
     load();
   }, []);
 
-  function handleAccount(account) {
-    setAccount(account);
-  }
-
   function handleElection(electionAddress) {
     setElection(electionAddress);
   }
 
   async function handleVote(who, callback) {
-    if (account) {
-      const electionContract = new ethers.Contract(election, eAbi, provider.getSigner());
+      const electionContract = new ethers.Contract(election, eAbi, signer);
       const tx = await electionContract.vote(who);
       await tx.wait(1);
       callback();
-    } else {
-      console.log("Please connect your wallet first.");
-    }
   }
 
   async function handleOffice(callback) {
-    const electionContract = new ethers.Contract(election, eAbi, provider.getSigner());
+    const electionContract = new ethers.Contract(election, eAbi, signer);
     // TODO: remove placeholder name
     const tx = await electionContract.runForElection("John Doe", {value: ethers.utils.parseEther("0.05")});
     await tx.wait(1);
@@ -75,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleAccount={handleAccount} connectedAccount={account} />
+      <Header  />
       <div className="split">
         <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
         <hr />
