@@ -1,5 +1,5 @@
 # Blockchain_Elections_React
-Frontend for [Blockchain Elections](https://github.com/xavierdmello/Blockchain_Elections), built with React & Ethers.js
+v2 Frontend for [Blockchain Elections (v1)](https://github.com/xavierdmello/Blockchain_Elections), built with React & Ethers.js
 
 WIP. Most features not implemented yet.
 
