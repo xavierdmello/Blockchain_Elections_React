@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/Header.css";
 import logo from "../assets/logo.png";
 
-import { Web3Button } from "@web3modal/react";
+import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 export default function Header() {
   return (
     <div className="Header">
@@ -12,9 +12,11 @@ export default function Header() {
         <b>Vote</b>
         <b>Run For Office</b>
         <b>Manage Elections</b>
+        <b>Testnet Faucet</b>
       </span>
 
       <div className="web3buttons">
+        {/* <Web3NetworkSwitch /> */}
         <Web3Button id="w3button" icon="show" balance="show" />
       </div>
     </div>
