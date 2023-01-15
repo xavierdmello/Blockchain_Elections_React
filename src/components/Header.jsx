@@ -13,6 +13,7 @@ export default function Header() {
         <b>Run For Office</b>
         <b>Manage Elections</b>
         <b>Testnet Faucet</b>
+        <b>Github</b>
       </span>
 
       <div className="web3buttons">
