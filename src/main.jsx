@@ -22,7 +22,7 @@ const wagmiClient = createClient({
 });
 
 const chainImages = {
-  43113: "./src/assets/avax.svg",
+  43113: "./avax.svg",
 };
 
 // Web3Modal Ethereum Client
