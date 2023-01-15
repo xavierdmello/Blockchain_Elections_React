@@ -15,7 +15,7 @@ export default function Header() {
       </span>
 
       <div className="web3buttons">
-        <Web3Button />
+        <Web3Button id="w3button" icon="show" balance="show" />
       </div>
     </div>
   );

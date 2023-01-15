@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './styles/index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./styles/index.css";
 import { EthereumClient, modalConnectors, walletConnectProvider } from "@web3modal/ethereum";
 
 import { Web3Modal } from "@web3modal/react";
 
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 
-import {  avalancheFuji} from "wagmi/chains";
+import { avalancheFuji } from "wagmi/chains";
 
 const chains = [avalancheFuji];
 
@@ -28,6 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <App />
     </WagmiConfig>
 
-    <Web3Modal projectId="4e133e46b7d4ce91f051d09546ec365f" ethereumClient={ethereumClient} />
+    <Web3Modal projectId="4e133e46b7d4ce91f051d09546ec365f" ethereumClient={ethereumClient} themeColor="magenta" themeMode="light" />
   </React.StrictMode>
 );

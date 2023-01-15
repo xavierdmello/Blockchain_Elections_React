@@ -12,4 +12,5 @@ body {
 
 * {
   font-family: "Inter", sans-serif;
+  --color-fg-accent: #860038;
 }
