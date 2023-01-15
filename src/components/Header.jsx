@@ -12,7 +12,7 @@ export default function Header() {
         <b>Vote</b>
         <b>Run For Office</b>
         <b>Manage Elections</b>
-        <b>Testnet Faucet</b>
+        <b>Faucet</b>
         <b>Github</b>
       </span>
 
