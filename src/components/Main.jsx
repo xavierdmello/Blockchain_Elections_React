@@ -45,7 +45,7 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
           Run For Office
         </button> */}
 
-      <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="600px">
+      <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="750px">
         <Column field="rank" header=""></Column>
         <Column field="name" header="Name"></Column>
         <Column field="votes" header="Votes"></Column>

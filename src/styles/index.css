@@ -1,6 +1,5 @@
 body {
   min-height: 100vh;
-  overflow: auto;
   margin-bottom: 200px;
   background-image: url(../assets/hero-top.jpg), url(../assets/hero-bottom.jpg);
   background-position: top, bottom;

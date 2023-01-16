@@ -1,32 +1,70 @@
 .Header {
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} 
-
-.right > img {
-    max-height: 60px;
-
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
 }
 
+.logo {
+  height: 60px;
+}
+
+.logo_smol {
+  height: 40px;
+  display: none;
+}
+
+.overflow_menu {
+  height: 50px;
+    display: none;
+}
+
+@media screen and (max-width: 750px) {
+  .logo {
+    display: none;
+  }
+  .logo_smol {
+    display: inline;
+  }
+
+
+}
 .web3buttons {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .web3buttons > * {
-    margin-left: 20px;
+  margin-left: 20px;
+  white-space: nowrap;
 }
- 
+
 .right {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  overflow: hidden;
+
 }
 
-.right > *{
-    margin-right: 40px;
+.right img {
+  margin-right: 10px;
+}
+.right b,
+.overflow_menu {
+  margin: 0px 5px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
-
+.right b:hover,
+.overflow_menu:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 10%);
+  background: rgba(255, 255, 255, 0.375);
+  outline: 1px solid rgba(255, 255, 255, 0.125);
+}
