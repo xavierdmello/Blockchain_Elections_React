@@ -13,7 +13,7 @@ export default function Header() {
         <img className="logo" src={logo}></img>
         <img className="logo_smol" src={logo_smol}></img>
         <b>Vote</b>
-        <b>Apply</b>
+        <b>Run</b>
         <b>Manage</b>
         <b>Faucet</b>
         <b>Github</b>
