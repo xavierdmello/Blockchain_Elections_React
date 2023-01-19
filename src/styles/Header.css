@@ -5,6 +5,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   width: 100%;
+  height: 60px;
 }
 
 .logo {
@@ -18,7 +19,6 @@
 
 .overflow_menu {
   height: 50px;
-    display: none;
 }
 
 @media screen and (max-width: 750px) {
@@ -28,8 +28,6 @@
   .logo_smol {
     display: inline;
   }
-
-
 }
 .web3buttons {
   display: flex;
@@ -47,7 +45,6 @@
   align-items: center;
 
   overflow: hidden;
-
 }
 
 .right img {

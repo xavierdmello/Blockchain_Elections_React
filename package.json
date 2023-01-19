@@ -12,6 +12,7 @@
     "@web3modal/ethereum": "^2.0.0-rc.3",
     "@web3modal/react": "^2.0.0-rc.3",
     "ethers": "^5.7.2",
+    "nanoid": "^4.0.0",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.3",
     "react": "^18.2.0",
