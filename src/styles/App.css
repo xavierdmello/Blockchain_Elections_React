@@ -1,16 +1,17 @@
 .App {
-  position: absolute;
+  position: relative;
   box-sizing: border-box;
   width: 90%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   margin: auto;
   font-family: "Inter", sans-serif;
-  z-index: 10;
-  height: 100%;
+  margin-bottom: 50px;
 }
+
+.heroTop {
+  position: absolute;
+  width: 100%;
+}
+
 
 .App > * {
   font-family: "Inter", sans-serif;

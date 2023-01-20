@@ -45,7 +45,3 @@
   margin-left: auto;
 }
 
-.mainHeader > h1 {
-  position: absolute;
-  z-index: 999999999;
-}

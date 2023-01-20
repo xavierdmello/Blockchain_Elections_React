@@ -14,6 +14,7 @@ import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 import { useSigner, useProvider } from "wagmi";
 import useIsSmol, {smolBreakpoint} from "./useIsSmol";
+import heroTop from "./assets/hero-top.jpg"
 
 const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
 const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
@@ -62,12 +63,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header />
-      <div className="split">
-        <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
-        <hr />
-        <Main election={election} eda={eda} handleVote={handleVote} handleOffice={handleOffice} />
+    <div className="container">
+      <img src={heroTop} className="heroTop"/>
+      <div className="App">
+        <Header />
+        <div className="split">
+          <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
+          <hr />
+          <Main election={election} eda={eda} handleVote={handleVote} handleOffice={handleOffice} />
+        </div>
       </div>
     </div>
   );
