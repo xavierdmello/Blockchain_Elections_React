@@ -30,7 +30,7 @@
     max-width: 100%;
   }
   .Sidebar > ul {
-    max-height: 200px;
+    max-height: 280px;
     overflow: hidden;
     overflow-y: scroll;
   }
