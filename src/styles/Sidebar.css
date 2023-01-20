@@ -26,7 +26,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .Sidebar  {
+  .Sidebar {
     max-width: 100%;
+  }
+  .Sidebar > ul {
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 }
