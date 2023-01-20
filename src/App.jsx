@@ -13,6 +13,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 import { useSigner, useProvider } from "wagmi";
+import useIsSmol, {smolBreakpoint} from "./useIsSmol";
 
 const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
 const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
@@ -20,6 +21,8 @@ const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
 function App() {
   const [hasWeb3, setHasWeb3] = useState(window.ethereum ? true : false);
   const [election, setElection] = useState();
+  const smol = useIsSmol();
+
 
   const { data: signer, isError, isLoading } = useSigner();
   const provider = useProvider();

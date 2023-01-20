@@ -4,7 +4,7 @@ import "../styles/Header.css";
 import logo from "../assets/logo.png";
 import logo_smol from "../assets/logo-smol.png";
 import overflow_menu from "../assets/overflow_menu.svg";
-import { nanoid } from "nanoid";
+import useIsSmol from "../useIsSmol";
 
 import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 
@@ -16,7 +16,8 @@ export default function Header() {
     faucet: { text: "Faucet", onClick: () => console.log("Faucet"), visible: true },
     github: { text: "Github", onClick: () => console.log("Github"), visible: true },
   });
-
+  const smol = useIsSmol();
+  
   // Map header buttons to JSX elements
   const navButtonElements = [];
   const overflowMenu = [];
@@ -72,8 +73,10 @@ export default function Header() {
 
       <div className="web3buttons">
         <img className="overflow_menu" src={overflow_menu} style={overflowMenuStyle} />
-        <Web3NetworkSwitch className="w3button" />
-        <Web3Button className="w3button" icon="show" balance="show" />
+        <Web3NetworkSwitch className="w3NetworkSwitch w3button" style={{display: smol ? "none" : "inline" }}/>
+        
+        <Web3Button className="w3button" icon="show" balance={smol ? "hide" : "show"} />
+        
       </div>
     </div>
   );

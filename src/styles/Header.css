@@ -21,7 +21,7 @@
   height: 50px;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .logo {
     display: none;
   }
@@ -53,7 +53,7 @@
 .overflow_menu {
   /* Hack to prevent clipping of box shadow */
   margin: 100% 5px;
-  
+
   padding: 15px;
   border-radius: 10px;
   height: 100%;

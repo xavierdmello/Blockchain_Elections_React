@@ -1,26 +1,32 @@
 .Sidebar {
-    flex: 1;
-    margin: 0;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    max-width:300px;
+  flex: 1;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
 }
 
 .Sidebar > ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
 }
 
 .Sidebar > h1 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
- .Sidebar > ul > li {
-    margin-bottom: 10px;
- }
- 
-.Sidebar > ul > li > button > span{
-  font-family: "Inter", sans-serif ;
+.Sidebar > ul > li {
+  margin-bottom: 10px;
+}
+
+.Sidebar > ul > li > button > span {
+  font-family: "Inter", sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .Sidebar  {
+    max-width: 100%;
+  }
 }

@@ -4,7 +4,7 @@ import "../styles/Main.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import HoverAddress from "./HoverAddress";
-
+import { smolBreakpoint } from "../useIsSmol";
 export default function Main({ election, eda, handleVote, handleOffice }) {
   const [electionData, setElectionData] = useState();
 
@@ -18,6 +18,9 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
       load();
     }
   }, [election]);
+
+
+
 
   let title = "";
   let tableData = [];
@@ -41,11 +44,7 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
   return (
     <div className="Main">
       <h1 className="electionTitle">{electionData && title}</h1>
-      {/* <button className="runForOfficeButton button glass" onClick={() => handleOffice(load)}>
-          Run For Office
-        </button> */}
-
-      <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint="750px">
+      <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint={`${smolBreakpoint}px`}>
         <Column field="rank" header=""></Column>
         <Column field="name" header="Name"></Column>
         <Column field="votes" header="Votes"></Column>
