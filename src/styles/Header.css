@@ -61,7 +61,7 @@
 .overflow_menu:hover {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 10%);
+  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 2%);
   background: rgba(255, 255, 255, 0.375);
   outline: 1px solid rgba(255, 255, 255, 0.125);
 }
