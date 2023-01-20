@@ -43,7 +43,6 @@
   display: flex;
   justify-items: center;
   align-items: center;
-
   overflow: hidden;
 }
 
@@ -52,16 +51,27 @@
 }
 .right b,
 .overflow_menu {
-  margin: 0px 5px;
+  /* Hack to prevent clipping of box shadow */
+  margin: 100% 5px;
+  
   padding: 15px;
   border-radius: 10px;
+  height: 100%;
+  transition: 0.25s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: all;
+}
+
+.overflow_menu {
+  /* Fix for hack in prev style */
+  height: 50px;
 }
 
 .right b:hover,
 .overflow_menu:hover {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 2%);
+  box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 1%);
   background: rgba(255, 255, 255, 0.375);
-  outline: 1px solid rgba(255, 255, 255, 0.125);
 }
