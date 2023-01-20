@@ -17,7 +17,7 @@ export default function Header() {
     github: { text: "Github", onClick: () => console.log("Github"), visible: true },
   });
   const smol = useIsSmol();
-  
+
   // Map header buttons to JSX elements
   const navButtonElements = [];
   const overflowMenu = [];
@@ -73,10 +73,9 @@ export default function Header() {
 
       <div className="web3buttons">
         <img className="overflow_menu" src={overflow_menu} style={overflowMenuStyle} />
-        <Web3NetworkSwitch className="w3NetworkSwitch w3button" style={{display: smol ? "none" : "inline" }}/>
-        
-        <Web3Button className="w3button" icon="show" balance={smol ? "hide" : "show"} />
-        
+        <Web3NetworkSwitch className="w3NetworkSwitch w3button" style={{ display: smol ? "none" : "inline" }} />
+
+        <Web3Button className="w3button" icon={smol ? "hide" : "show"} label={smol ? "Connect" : "Connect Wallet"} balance={smol ? "hide" : "show"} />
       </div>
     </div>
   );
