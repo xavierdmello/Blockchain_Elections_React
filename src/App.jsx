@@ -11,7 +11,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css"; //icons
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Main from "./components/Main";
+import Vote from "./components/Vote";
 import { useSigner, useProvider } from "wagmi";
 import useIsSmol, {smolBreakpoint} from "./useIsSmol";
 import heroTop from "./assets/hero-top.jpg"
@@ -23,7 +23,7 @@ function App() {
   const [hasWeb3, setHasWeb3] = useState(window.ethereum ? true : false);
   const [election, setElection] = useState();
   const smol = useIsSmol();
-
+  const [page, setPage] = useState("vote")
 
   const { data: signer, isError, isLoading } = useSigner();
   const provider = useProvider();
@@ -62,15 +62,19 @@ function App() {
     callback();
   }
 
+  function handleClick(page) {
+    console.log(page)
+    setPage(page)
+  }
   return (
     <div className="container">
-      <img src={heroTop} className="heroTop"/>
+      <img src={heroTop} className="heroTop" />
       <div className="App">
-        <Header />
+        <Header handleClick={handleClick} />
         <div className="split">
           <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
           <hr />
-          <Main election={election} eda={eda} handleVote={handleVote} handleOffice={handleOffice} />
+          {page === "vote" && <Vote election={election} eda={eda} handleVote={handleVote} handleOffice={handleOffice} />}
         </div>
       </div>
     </div>

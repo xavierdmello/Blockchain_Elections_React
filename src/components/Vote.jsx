@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../styles/Main.css";
+import "../styles/Vote.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import HoverAddress from "./HoverAddress";
 import { smolBreakpoint } from "../useIsSmol";
-export default function Main({ election, eda, handleVote, handleOffice }) {
+export default function Vote({ election, eda, handleVote, handleOffice }) {
   const [electionData, setElectionData] = useState();
 
   async function load() {
@@ -18,9 +18,6 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
       load();
     }
   }, [election]);
-
-
-
 
   let title = "";
   let tableData = [];
@@ -42,7 +39,7 @@ export default function Main({ election, eda, handleVote, handleOffice }) {
   }
 
   return (
-    <div className="Main">
+    <div className="Vote">
       <h1 className="electionTitle">{electionData && title}</h1>
       <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint={`${smolBreakpoint}px`}>
         <Column field="rank" header=""></Column>

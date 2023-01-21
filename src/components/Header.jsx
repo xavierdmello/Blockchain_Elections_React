@@ -8,14 +8,14 @@ import useIsSmol from "../useIsSmol";
 
 import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 
-export default function Header() {
+export default function Header({ handleClick }) {
   const [navButtons, setNavButtons] = useState({
-    vote: { text: "Vote", onClick: () => console.log("Vote"), visible: true },
-    run: { text: "Run", onClick: () => console.log("Run"), visible: true },
-    manage: { text: "Manage", onClick: () => console.log("Manage"), visible: true },
-    create: { text: "Create", onClick: () => console.log("Create"), visible: true },
-    faucet: { text: "Faucet", onClick: () => console.log("Faucet"), visible: true },
-    github: { text: "Github", onClick: () => console.log("Github"), visible: true },
+    vote: { text: "Vote", onClick: () => handleClick("vote"), visible: true },
+    run: { text: "Run", onClick: () => handleClick("run"), visible: true },
+    manage: { text: "Manage", onClick: () => handleClick("manage"), visible: true },
+    create: { text: "Create", onClick: () => handleClick("create"), visible: true },
+    faucet: { text: "Faucet", onClick: () => window.open("https://faucet.avax.network/", "_blank").focus(), visible: true },
+    github: { text: "Github", onClick: () => window.open("https://github.com/xavierdmello/Blockchain_Elections_React", '_blank').focus(), visible: true },
   });
 
   const smol = useIsSmol();
