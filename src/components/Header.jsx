@@ -13,29 +13,39 @@ export default function Header() {
     vote: { text: "Vote", onClick: () => console.log("Vote"), visible: true },
     run: { text: "Run", onClick: () => console.log("Run"), visible: true },
     manage: { text: "Manage", onClick: () => console.log("Manage"), visible: true },
+    create: { text: "Create", onClick: () => console.log("Create"), visible: true },
     faucet: { text: "Faucet", onClick: () => console.log("Faucet"), visible: true },
     github: { text: "Github", onClick: () => console.log("Github"), visible: true },
   });
+
   const smol = useIsSmol();
 
   // Map header buttons to JSX elements
   const navButtonElements = [];
-  const overflowMenu = [];
+  const overflowElements = [];
   Object.keys(navButtons).forEach(function (key, index) {
     const button = navButtons[key];
     const style = {
       visibility: button.visible ? "visible" : "hidden",
     };
-    const element = (
+
+    let element = (
       <b className="nav-button" id={key} key={key} style={style} onClick={button.onClick}>
         {button.text}
       </b>
     );
     navButtonElements.push(element);
-    !button.visible && overflowMenu.push(element);
+    if (!button.visible) {
+      element = (
+        <b className="nav-button" id={key} key={key} style={{ visibility: "visible" }} onClick={button.onClick}>
+          {button.text}
+        </b>
+      );
+      overflowElements.push(element);
+    }
   });
   const overflowMenuStyle = {
-    visibility: overflowMenu.length ? "visible" : "hidden",
+    visibility: overflowElements.length ? "visible" : "hidden",
   };
 
   // Setup event listeners that sync button visibility with react state
@@ -72,7 +82,11 @@ export default function Header() {
       </span>
 
       <div className="web3buttons">
-        <img className="overflow_menu" src={overflow_menu} style={overflowMenuStyle} />
+        <div className="overflowContainer">
+          <img className="overflow_menu" src={overflow_menu} style={overflowMenuStyle} />
+          <div className="overflowElements">{overflowElements}</div>
+        </div>
+
         <Web3NetworkSwitch className="w3NetworkSwitch w3button" style={{ display: smol ? "none" : "inline" }} />
 
         <Web3Button className="w3button" icon={smol ? "hide" : "show"} label={smol ? "Connect" : "Connect Wallet"} balance={smol ? "hide" : "show"} />
