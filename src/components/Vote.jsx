@@ -32,7 +32,7 @@ export default function Vote({ election, eda, handleVote }) {
         votes: candidate.votes.toNumber(),
         vote: (
           <button className="voteButton glass" onClick={() => handleVote(candidate.candidateAddress, load)}>
-            dsadsa
+            Vote
           </button>
         ),
       };
