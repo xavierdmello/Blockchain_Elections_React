@@ -37,7 +37,7 @@ export default function Header({ handleClick }) {
     navButtonElements.push(element);
     if (!button.visible) {
       element = (
-        <b className="nav-button" id={key} key={key} style={{ visibility: "visible" }} onClick={button.onClick}>
+        <b className="nav-button" id={key} key={key} onClick={button.onClick}>
           {button.text}
         </b>
       );

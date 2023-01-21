@@ -110,10 +110,6 @@
   opacity: 1;
 }
 
-.hide {
-  visibility: hidden !important;
-}
-
 .overflowContainer:hover .overflow_menu {
   backdrop-filter: blur(10px);
   box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 1%);

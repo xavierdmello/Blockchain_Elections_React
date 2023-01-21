@@ -5,11 +5,12 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import HoverAddress from "./HoverAddress";
 import { smolBreakpoint } from "../useIsSmol";
-export default function Vote({ election, eda, handleVote, handleOffice }) {
+
+export default function Vote({ election, eda, handleVote }) {
   const [electionData, setElectionData] = useState();
 
   async function load() {
-    const data = await eda.getElectionData(election);
+    const data = await eda.getElectionData(election.election);
     setElectionData(data);
   }
 
@@ -19,11 +20,11 @@ export default function Vote({ election, eda, handleVote, handleOffice }) {
     }
   }, [election]);
 
-  let title = "";
+
   let tableData = [];
   if (electionData) {
     const { candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters } = electionData;
-    title = electionName;
+
     tableData = candidates.map((candidate) => {
       return {
         ...candidate,
@@ -31,7 +32,7 @@ export default function Vote({ election, eda, handleVote, handleOffice }) {
         votes: candidate.votes.toNumber(),
         vote: (
           <button className="voteButton glass" onClick={() => handleVote(candidate.candidateAddress, load)}>
-            Vote
+            dsadsa
           </button>
         ),
       };
@@ -40,7 +41,7 @@ export default function Vote({ election, eda, handleVote, handleOffice }) {
 
   return (
     <div className="Vote">
-      <h1 className="electionTitle">{electionData && title}</h1>
+      <h1 className="electionTitle">{election && election.name}</h1>
       <DataTable className="electionData" value={tableData} responsiveLayout="stack" breakpoint={`${smolBreakpoint}px`}>
         <Column field="rank" header=""></Column>
         <Column field="name" header="Name"></Column>
