@@ -38,7 +38,6 @@ export default function Run({ election }) {
         <p>Enter your name:</p>
         <input placeholder="John Doe" type="text" onChange={(event) => setName(event.target.value)} value={name} />
         <button onClick={write}>Run For Office</button>
-        {candidateFee.toString()}
       </div>
     </div>
   );
