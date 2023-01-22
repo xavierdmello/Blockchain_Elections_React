@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "../styles/Sidebar.css";
 
-export default function Sidebar({ eda, emAddress, handleElection }) {
+export default function Sidebar({ eda, emAddress, handleElection, handlePage }) {
   const [elections, setElections] = useState();
   let electionElements = [];
 
@@ -30,7 +30,11 @@ export default function Sidebar({ eda, emAddress, handleElection }) {
 
   return (
     <div className="Sidebar">
-      <h1>Elections</h1>
+      <div className="sidebar-header">
+        <h1>Elections</h1>
+        <button className="grow" onClick={() => handlePage("create")}>+</button>
+      </div>
+
       <ul>{electionElements}</ul>
     </div>
   );

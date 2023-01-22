@@ -23,7 +23,7 @@ const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
 const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
 
 function App() {
-  const [hasWeb3, setHasWeb3] = useState(window.ethereum ? true : false);
+
   const [election, setElection] = useState();
   const smol = useIsSmol();
   const [page, setPage] = useState("vote");
@@ -33,9 +33,6 @@ function App() {
 
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
-  useEffect(() => {
-    setHasWeb3(window.ethereum ? true : false);
-  });
 
   // Set default election as the first one
   useEffect(() => {
@@ -67,7 +64,7 @@ function App() {
       <div className="App">
         <Header handleClick={handleClick} />
         <div className="split">
-          <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} />
+          <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} handlePage={handleClick} />
           <hr />
           {page === "vote" && <Vote election={election} eda={eda} handleVote={handleVote} />}
           {page === "run" && <Run election={election} />}
