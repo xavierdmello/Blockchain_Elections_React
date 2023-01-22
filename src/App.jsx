@@ -44,6 +44,10 @@ function App() {
   }, []);
 
   function handleElection(election) {
+    if (page === "create") {
+      setPage("vote")
+    }
+
     setElection(election);
   }
 
