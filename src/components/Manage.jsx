@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { useSigner, useProvider, usePrepareContractWrite, useContractWrite, useContractRead, useBalance } from "wagmi";
+import { useProvider, usePrepareContractWrite, useContractWrite } from "wagmi";
 import eAbi from "../abi/eAbi";
 import "../styles/Manage.css";
-
+import {ethers} from "ethers"
 export default function Manage({ election }) {
-  const { data: revenue } = useBalance({
-    address: election.election,
-    chainId: 43113,
-  });
+  const provider = useProvider();
+  const [revenue, setRevenue] = useState("");
+
+  useEffect(() => {
+    async function load() {
+      const rawRevenue = await provider.getBalance(election.election);
+      setRevenue(ethers.utils.formatEther(rawRevenue));
+    }
+    load();
+  }, [election]);
 
   const { config, error } = usePrepareContractWrite({
     address: election.election,
@@ -24,7 +30,7 @@ export default function Manage({ election }) {
 
       <div className="manageRow">
         <p>
-          Current Revenue: {revenue.formatted} {revenue.symbol}
+          Current Revenue: {revenue} AVAX
         </p>
 
         <button onClick={write}>Withdraw Revenue</button>

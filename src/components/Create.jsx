@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSigner, useProvider, usePrepareContractWrite, useContractWrite, useContractRead, useBalance } from "wagmi";
+import { useSigner, useProvider, usePrepareContractWrite, useContractWrite } from "wagmi";
 import emAbi from "../abi/emAbi";
 import "../styles/Create.css";
 
@@ -14,7 +14,6 @@ export default function Create({ electionManager }) {
     args: [name, unixTime(end)],
   });
 
-  console.log(electionManager)
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
   function unixTime(dateString) {
@@ -22,7 +21,6 @@ export default function Create({ electionManager }) {
     const timezoneOffset = date.getTimezoneOffset() * 60;
     return Math.floor(date.getTime() / 1000 + timezoneOffset);
   }
-
 
   return (
     <div className="Create">
