@@ -8,3 +8,8 @@
   align-self: center;
   margin-bottom: 10px;
 }
+
+.Manage button {
+  max-width: 120px;
+  height: 50px;
+}

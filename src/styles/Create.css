@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.Create > h1 {
+  align-self: center;
+  margin-bottom: 10px;
+}
 
 .nameRow {
   display: flex;
@@ -12,4 +16,8 @@
 
 .nameRow > * {
   margin-right: 10px;
+}
+.Create button {
+  max-width: 120px;
+  height: 50px;
 }

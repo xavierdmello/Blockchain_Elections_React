@@ -26,7 +26,7 @@ export default function Manage({ election }) {
 
   return (
     <div className="Manage">
-      <h1 className="electionTitle">{election.name}</h1>
+      <h1 className="electionTitle">Manage - {election.name}</h1>
 
       <div className="manageRow">
         <p>

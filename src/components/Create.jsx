@@ -24,6 +24,7 @@ export default function Create({ electionManager }) {
 
   return (
     <div className="Create">
+      <h1 className="electionTitle">Create</h1>
       <div className="nameRow">
         <p>Election name: </p>
         <input type="text" value={name} onChange={(event) => setName(event.target.value)}></input>

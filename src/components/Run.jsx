@@ -32,13 +32,13 @@ export default function Run({ election }) {
 
   return (
     <div className="Run">
-      <h1 className="electionTitle">{election.name}</h1>
+      <h1 className="electionTitle">Run - {election.name}</h1>
 
       <div className="voteRow">
         <p>Enter your name:</p>
         <input placeholder="John Doe" type="text" onChange={(event) => setName(event.target.value)} value={name} />
-        <button onClick={write}>Run For Office</button>
       </div>
+      <button onClick={write}>Run For Office</button>
     </div>
   );
 }
