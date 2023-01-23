@@ -5,7 +5,7 @@ WIP.
 
 Try it now: https://elections.xavierdmello.com
 
-Or, run it locally:
+Or, run it locally (requires [node.js](https://nodejs.org/en/)):
 1. `yarn` to install dependancies
 2. `yarn dev` to start server
 
