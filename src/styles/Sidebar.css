@@ -49,3 +49,11 @@
     overflow-y: scroll;
   }
 }
+
+.sidebar-create {
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-create:hover {
+  transform: scale(1.15);
+}

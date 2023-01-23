@@ -15,7 +15,11 @@
   margin-top: 0;
   box-shadow: 0 0.75rem 2rem 0 rgb(0 0 0 / 3%);
 }
-
+.vote-dates {
+  align-self: center;
+  margin: 0;
+  margin-bottom: 10px;
+}
 .electionTitle {
   font-size: 23px;
 }

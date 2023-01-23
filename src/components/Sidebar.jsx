@@ -32,7 +32,7 @@ export default function Sidebar({ eda, emAddress, handleElection, handlePage }) 
     <div className="Sidebar">
       <div className="sidebar-header">
         <h1>Elections</h1>
-        <button className="grow" onClick={() => handlePage("create")}>+</button>
+        <button className="sidebar-create" onClick={() => handlePage("create")}>+</button>
       </div>
 
       <ul>{electionElements}</ul>

@@ -14,8 +14,8 @@ export default function Header({ handleClick }) {
     run: { text: "Run", onClick: () => handleClick("run"), visible: true },
     manage: { text: "Manage", onClick: () => handleClick("manage"), visible: true },
     create: { text: "Create", onClick: () => handleClick("create"), visible: true },
-    faucet: { text: "Faucet", onClick: () => window.open("https://faucet.avax.network/", "_blank").focus(), visible: true },
-    github: { text: "Github", onClick: () => window.open("https://github.com/xavierdmello/Blockchain_Elections_React", '_blank').focus(), visible: true },
+    faucet: { text: "Faucet ↗", onClick: () => window.open("https://faucet.avax.network/", "_blank").focus(), visible: true },
+    github: { text: "Github ↗", onClick: () => window.open("https://github.com/xavierdmello/Blockchain_Elections_React", "_blank").focus(), visible: true },
   });
 
   const smol = useIsSmol();
