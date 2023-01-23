@@ -24,10 +24,20 @@ const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
 
 function App() {
   const [election, setElection] = useState();
+  const [electionData, setElectionData] = useState();
   const [page, setPage] = useState("vote");
 
   const provider = useProvider();
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
+
+
+  useEffect(() => {
+    async function load() {
+      const data = await eda.getElectionData(election.election);
+      setElectionData(data);
+    }
+    election && load();
+  }, [election]);
 
   // Set default election as the first one
   useEffect(() => {
@@ -68,7 +78,7 @@ function App() {
         <div className="split">
           <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} handlePage={handlePage} />
           <hr />
-          {page === "vote" && <Vote election={election} eda={eda} handleSuccess={handleSuccess} />}
+          {page === "vote" && <Vote election={election} electionData={electionData} handleSuccess={handleSuccess} />}
           {page === "run" && <Run election={election} eda={eda} handleSuccess={handleSuccess} />}
           {page === "manage" && <Manage election={election} handleSuccess={handleSuccess} />}
           {page === "create" && <Create electionManager={emAddress} handleSuccess={handleSuccess} />}

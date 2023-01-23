@@ -1,35 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import "../styles/Vote.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import HoverAddress from "./HoverAddress";
 import useIsSmol, { smolBreakpoint } from "../useIsSmol";
-import {ethers} from "ethers"
+import { ethers } from "ethers";
 import eAbi from "../abi/eAbi";
 import { useSigner } from "wagmi";
 
-export default function Vote({ election, eda, handleSuccess }) {
-  const [electionData, setElectionData] = useState();
+export default function Vote({ election, electionData, handleSuccess }) {
   const smol = useIsSmol();
-  const {data: signer} = useSigner()
-
-  async function load() {
-    const data = await eda.getElectionData(election.election);
-    setElectionData(data);
-  }
-
-  useEffect(() => {
-    if (election) {
-      load();
-    }
-  }, [election]);
+  const { data: signer } = useSigner();
 
   let tableData = [];
   let candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters;
+
   if (electionData) {
     ({ candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters } = electionData);
-
     tableData = candidates.map((candidate) => {
       return {
         ...candidate,
@@ -43,14 +30,13 @@ export default function Vote({ election, eda, handleSuccess }) {
       };
     });
   }
-  
-  async function handleVote(who) {
 
+  async function handleVote(who) {
     const electionContract = new ethers.Contract(election.election, eAbi, signer);
     const tx = await electionContract.vote(who);
-    handleSuccess(tx, load)
+    handleSuccess(tx);
   }
-  
+
   let formattedStartTime, formattedEndTime;
   if (electionData) {
     formattedStartTime = new Date(electionStartTime.toNumber() * 1000).toLocaleString();
