@@ -55,7 +55,9 @@ export default function Manage({ election, electionData, handleSuccess }) {
       <div className="manageRow">
         <p>Current Revenue: {revenue} AVAX</p>
 
-        <button onClick={handleWithdraw}>Withdraw Revenue</button>
+        <button className="txButton glass" onClick={handleWithdraw}>
+          Withdraw Revenue
+        </button>
       </div>
     </div>
   );

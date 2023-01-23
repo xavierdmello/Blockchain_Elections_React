@@ -23,7 +23,7 @@ export default function Vote({ election, electionData, handleSuccess, callback }
         address: <HoverAddress address={candidate.candidateAddress} />,
         votes: candidate.votes.toNumber(),
         vote: (
-          <button className="voteButton glass" onClick={() => handleVote(candidate.candidateAddress)}>
+          <button className="txButton glass" onClick={() => handleVote(candidate.candidateAddress)}>
             Vote
           </button>
         ),

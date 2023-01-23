@@ -46,7 +46,9 @@ export default function Run({ election, electionData, handleSuccess, callback })
         <input placeholder="John Doe" type="text" onChange={(event) => setName(event.target.value)} value={name} />
       </div>
       <p>Candidate fee: {ethers.utils.formatEther(candidateFee)} AVAX</p>
-      <button onClick={handleRun}>Run For Office</button>
+      <button className="txButton glass" onClick={handleRun}>
+        Run For Office
+      </button>
     </div>
   );
 }

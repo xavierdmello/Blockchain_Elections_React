@@ -32,7 +32,7 @@ export default function Create({ electionManager, handleSuccess, callback }) {
         <p>End date: </p>
         <input type="date" onChange={(event) => setEnd(event.target.value)} value={end}></input>
       </div>
-      <button onClick={handleCreate}>Create Election</button>
+      <button className="txButton glass" onClick={handleCreate}>Create Election</button>
     </div>
   );
 }
