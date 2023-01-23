@@ -9,6 +9,7 @@
 .electionTitle {
   align-self: center;
   margin-bottom: 10px;
+    text-align: center;
 }
 
 .voteRow {
