@@ -8,7 +8,7 @@ import { ethers } from "ethers";
 import eAbi from "../abi/eAbi";
 import { useSigner } from "wagmi";
 
-export default function Vote({ election, electionData, handleSuccess }) {
+export default function Vote({ election, electionData, handleSuccess, callback }) {
   const smol = useIsSmol();
   const { data: signer } = useSigner();
 
@@ -34,7 +34,7 @@ export default function Vote({ election, electionData, handleSuccess }) {
   async function handleVote(who) {
     const electionContract = new ethers.Contract(election.election, eAbi, signer);
     const tx = await electionContract.vote(who);
-    handleSuccess(tx);
+    handleSuccess(tx, callback);
   }
 
   let formattedStartTime, formattedEndTime;

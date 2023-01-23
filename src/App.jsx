@@ -24,19 +24,29 @@ const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
 
 function App() {
   const [election, setElection] = useState();
+  const [elections, setElections] = useState();
   const [electionData, setElectionData] = useState();
   const [page, setPage] = useState("vote");
 
   const provider = useProvider();
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
 
+  async function loadElectionData() {
+    const data = await eda.getElectionData(election.election);
+    setElectionData(data);
+  }
+
+  async function loadElections() {
+    const elections = await eda.getElectionsBundledWithNames(emAddress);
+    setElections(elections);
+  }
 
   useEffect(() => {
-    async function load() {
-      const data = await eda.getElectionData(election.election);
-      setElectionData(data);
-    }
-    election && load();
+    loadElections();
+  }, []);
+
+  useEffect(() => {
+    election && loadElectionData();
   }, [election]);
 
   // Set default election as the first one
@@ -62,8 +72,10 @@ function App() {
 
   async function handleSuccess(tx, callback) {
     try {
+      console.log(tx)
       await tx.wait(1);
-      callback();
+      await callback();
+      console.log("erwqe")
       //handleNewNotification(tx);
     } catch (error) {
       console.error(error);
@@ -76,12 +88,12 @@ function App() {
       <div className="App">
         <Header handleClick={handlePage} />
         <div className="split">
-          <Sidebar eda={eda} emAddress={emAddress} handleElection={handleElection} handlePage={handlePage} />
+          <Sidebar elections={elections} handleElection={handleElection} handlePage={handlePage} />
           <hr />
-          {page === "vote" && <Vote election={election} electionData={electionData} handleSuccess={handleSuccess} />}
-          {page === "run" && <Run election={election} eda={eda} handleSuccess={handleSuccess} />}
-          {page === "manage" && <Manage election={election} handleSuccess={handleSuccess} />}
-          {page === "create" && <Create electionManager={emAddress} handleSuccess={handleSuccess} />}
+          {page === "vote" && <Vote election={election} electionData={electionData} handleSuccess={handleSuccess} callback={loadElectionData} />}
+          {page === "run" && <Run election={election} electionData={electionData} handleSuccess={handleSuccess} callback={loadElectionData} />}
+          {page === "manage" && <Manage election={election} electionData={electionData} handleSuccess={handleSuccess} />}
+          {page === "create" && <Create electionManager={emAddress} handleSuccess={handleSuccess} callback={loadElections} />}
         </div>
       </div>
     </div>

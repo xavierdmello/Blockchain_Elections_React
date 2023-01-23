@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-import { useSigner, useProvider, usePrepareContractWrite, useContractWrite } from "wagmi";
+import { ethers } from "ethers";
+import { useState } from "react";
+import { useSigner } from "wagmi";
 import emAbi from "../abi/emAbi";
 import "../styles/Create.css";
 
-export default function Create({ electionManager }) {
+export default function Create({ electionManager, handleSuccess, callback }) {
   const [name, setName] = useState("");
   const [end, setEnd] = useState("");
-  const { config, error } = usePrepareContractWrite({
-    address: electionManager,
-    abi: emAbi,
-    functionName: "createElection",
-    chainId: 43113,
-    args: [name, unixTime(end)],
-  });
-
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  const { data: singer } = useSigner();
 
   function unixTime(dateString) {
     const date = new Date(dateString);
     const timezoneOffset = date.getTimezoneOffset() * 60;
     return Math.floor(date.getTime() / 1000 + timezoneOffset);
+  }
+
+  async function handleCreate() {
+    const electionManagerContract = new ethers.Contract(electionManager, emAbi, singer);
+    const tx = await electionManagerContract.createElection(name, unixTime(end));
+    handleSuccess(tx, callback);
   }
 
   return (
@@ -33,7 +32,7 @@ export default function Create({ electionManager }) {
         <p>End date: </p>
         <input type="date" onChange={(event) => setEnd(event.target.value)} value={end}></input>
       </div>
-      <button onClick={write}>Create Election</button>
+      <button onClick={handleCreate}>Create Election</button>
     </div>
   );
 }

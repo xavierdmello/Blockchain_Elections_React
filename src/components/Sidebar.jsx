@@ -2,17 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import "../styles/Sidebar.css";
 
-export default function Sidebar({ eda, emAddress, handleElection, handlePage }) {
-  const [elections, setElections] = useState();
+export default function Sidebar({ elections, handleElection, handlePage }) {
   let electionElements = [];
-
-  useEffect(() => {
-    async function load() {
-      const elections = await eda.getElectionsBundledWithNames(emAddress);
-      setElections(elections);
-    }
-    load();
-  }, []);
 
   if (elections) {
     electionElements = elections.map((election) => {
@@ -32,7 +23,9 @@ export default function Sidebar({ eda, emAddress, handleElection, handlePage }) 
     <div className="Sidebar">
       <div className="sidebar-header">
         <h1>Elections</h1>
-        <button className="sidebar-create" onClick={() => handlePage("create")}>+</button>
+        <button className="sidebar-create" onClick={() => handlePage("create")}>
+          +
+        </button>
       </div>
 
       <ul>{electionElements}</ul>
