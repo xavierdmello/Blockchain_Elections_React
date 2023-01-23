@@ -49,6 +49,9 @@
 .right img {
   margin-right: 10px;
 }
+.nav-button {
+  white-space: nowrap;
+}
 .nav-button,
 .overflow_menu {
   /* Hack to prevent clipping of box shadow */
