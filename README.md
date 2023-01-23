@@ -5,6 +5,10 @@ WIP.
 
 Try it now: https://elections.xavierdmello.com
 
+Or, run it locally:
+1. `yarn` to install dependancies
+2. `yarn dev` to start server
+
 TODO:
 - red/green status lights for elections (green: open, red: closed)
 - tx notifications
