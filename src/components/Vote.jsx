@@ -45,7 +45,7 @@ export default function Vote({ election, electionData, handleSuccess, callback }
 
   return (
     <div className="Vote">
-      <h1 className="electionTitle">{election && election.name}</h1>
+      <h1 className="electionTitle">{election && `Vote: ${election.name}`}</h1>
       {!smol && (
         <p className="vote-dates">
           {formattedStartTime} - {formattedEndTime}

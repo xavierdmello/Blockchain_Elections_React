@@ -29,7 +29,7 @@ export default function Run({ election, electionData, handleSuccess, callback })
 
   return (
     <div className="Run">
-      <h1 className="electionTitle">{election.name}</h1>
+      <h1 className="electionTitle">Run: {election.name}</h1>
       {!smol && (
         <p className="vote-dates">
           {formattedStartTime} - {formattedEndTime}

@@ -40,7 +40,7 @@ export default function Manage({ election, electionData, handleSuccess }) {
 
   return (
     <div className="Manage">
-      <h1 className="electionTitle">Manage - {election.name}</h1>
+      <h1 className="electionTitle">Manage: {election.name}</h1>
       {!smol && (
         <p className="vote-dates">
           {formattedStartTime} - {formattedEndTime}
