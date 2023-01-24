@@ -11,6 +11,10 @@
   "dependencies": {
     "@web3modal/ethereum": "^2.0.0-rc.3",
     "@web3modal/react": "^2.0.0-rc.3",
+    "@web3uikit/core": "^0.2.42",
+    "@web3uikit/icons": "^0.2.41",
+    "@web3uikit/web3": "^0.2.2",
+    "ethcall": "^4.8.13",
     "ethers": "^5.7.2",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.3",
