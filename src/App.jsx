@@ -18,6 +18,7 @@ import Manage from "./components/Manage";
 import { useSigner, useProvider } from "wagmi";
 import useIsSmol, { smolBreakpoint } from "./useIsSmol";
 import heroTop from "./assets/hero-top.jpg";
+import { useNotification } from "@web3uikit/core";
 
 const emAddress = "0xC690ce62e557B7e7687DFb58945D49022851621A";
 const edaAddress = "0x2A0B10368e69E35a330Fac7DeFcC9dC879e8B021";
@@ -30,6 +31,7 @@ function App() {
 
   const provider = useProvider();
   const eda = new ethers.Contract(edaAddress, edaAbi, provider);
+  const dispatch = useNotification();
 
   async function loadElectionData() {
     const data = await eda.getElectionData(election.election);
@@ -72,13 +74,21 @@ function App() {
 
   async function handleSuccess(tx, callback) {
     try {
-      console.log(tx)
       await tx.wait(1);
       await callback();
-      console.log("erwqe")
-      //handleNewNotification(tx);
+      dispatch({
+        type: "success",
+        message: "Transaction Complete!",
+        title: "Transaction Notification",
+        position: "topR",
+      });
     } catch (error) {
-      console.error(error);
+      dispatch({
+        type: "error",
+        message: "Transaction Error",
+        title: "Transaction Notification",
+        position: "topR",
+      });
     }
   }
 

@@ -4,11 +4,12 @@ import { useSigner } from "wagmi";
 import eAbi from "../abi/eAbi";
 import "../styles/Run.css";
 import useIsSmol from "../useIsSmol";
-
+import { useNotification } from "@web3uikit/core";
 export default function Run({ election, electionData, handleSuccess, callback }) {
   const [name, setName] = useState("");
   const smol = useIsSmol();
   const { data: singer } = useSigner();
+  const dispatch = useNotification();
 
   let candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters;
   if (electionData) {
@@ -17,8 +18,18 @@ export default function Run({ election, electionData, handleSuccess, callback })
 
   async function handleRun() {
     const electionContract = new ethers.Contract(election.election, eAbi, singer);
-    const tx = await electionContract.runForElection(name, { value: candidateFee });
-    handleSuccess(tx, callback);
+    try {
+      const tx = await electionContract.runForElection(name, { value: candidateFee });
+      handleSuccess(tx, callback);
+    } catch (error) {
+      let miniError = error.reason.replace("execution reverted: ", "");
+      dispatch({
+        type: "error",
+        message: miniError,
+        title: "Error",
+        position: "topR",
+      });
+    }
   }
 
   let formattedStartTime, formattedEndTime;

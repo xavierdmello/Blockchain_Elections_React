@@ -4,13 +4,13 @@ import eAbi from "../abi/eAbi";
 import "../styles/Manage.css";
 import { ethers } from "ethers";
 import useIsSmol from "../useIsSmol";
-
+import { useNotification } from "@web3uikit/core";
 export default function Manage({ election, electionData, handleSuccess }) {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const [revenue, setRevenue] = useState("");
   const smol = useIsSmol();
-
+  const dispatch = useNotification();
   let candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters;
   if (electionData) {
     ({ candidateFee, candidates, closed, electionEndTime, electionName, electionStartTime, owner, voters } = electionData);
@@ -33,9 +33,19 @@ export default function Manage({ election, electionData, handleSuccess }) {
 
   async function handleWithdraw() {
     const electionContract = new ethers.Contract(election.election, eAbi, signer);
-    const tx = await electionContract.withdrawRevenue();
 
-    handleSuccess(tx, loadRevenue);
+    try {
+      const tx = await electionContract.withdrawRevenue();
+      handleSuccess(tx, loadRevenue);
+    } catch (error) {
+      let miniError = error.reason.replace("execution reverted: ", "");
+      dispatch({
+        type: "error",
+        message: miniError,
+        title: "Error",
+        position: "topR",
+      });
+    }
   }
 
   return (

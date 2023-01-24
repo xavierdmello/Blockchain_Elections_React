@@ -10,7 +10,7 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 
 import { avalancheFuji } from "wagmi/chains";
-
+import { NotificationProvider } from "@web3uikit/core";
 const chains = [avalancheFuji];
 
 // Wagmi client
@@ -29,9 +29,11 @@ const chainImages = {
 const ethereumClient = new EthereumClient(wagmiClient, chains);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <WagmiConfig client={wagmiClient}>
-      <App />
-    </WagmiConfig>
+    <NotificationProvider>
+      <WagmiConfig client={wagmiClient}>
+        <App />
+      </WagmiConfig>
+    </NotificationProvider>
 
     <Web3Modal projectId="4e133e46b7d4ce91f051d09546ec365f" ethereumClient={ethereumClient} chainImages={chainImages} themeColor="magenta" themeMode="light" />
   </React.StrictMode>
