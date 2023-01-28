@@ -30,3 +30,7 @@ button {
   -webkit-appearance: none !important;
   -webkit-border-radius: none !important;
 }
+input[type=text], input[type=button] {
+-webkit-appearance: none;
+-webkit-border-radius: 0;
+}
