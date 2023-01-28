@@ -25,3 +25,8 @@ b {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
+
+button {
+  -webkit-appearance: none !important;
+  -webkit-border-radius: none !important;
+}

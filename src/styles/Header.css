@@ -55,6 +55,8 @@
   outline: none;
   border: none;
   text-align: start;
+  -webkit-appearance: none;
+  -webkit-border-radius: none;
 }
 
 .nav-button,
@@ -97,7 +99,6 @@
 }
 
 .overflowContainer .overflowElements > * {
-
   margin: 0;
   height: auto;
 
@@ -110,7 +111,6 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
 }
 
 .overflowContainer:hover .overflowElements {
