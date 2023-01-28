@@ -92,7 +92,7 @@
 }
 
 .overflowContainer .overflowElements > * {
-  z-index: 101;
+
   margin: 0;
   height: auto;
 
@@ -105,7 +105,7 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-  z-index: 101;
+
 }
 
 .overflowContainer:hover .overflowElements {

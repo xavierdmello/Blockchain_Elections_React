@@ -11,8 +11,6 @@ Or, run it locally (requires [node.js](https://nodejs.org/en/)):
 
 TODO:
 - red/green status lights for elections (green: open, red: closed)
-- tx notifications
-- grey out buttons if not clickable & provide tooltip as to why
 - styling for run/manage/create page
 - vote: sort candidates, add rank too
 - modularize election title header component
