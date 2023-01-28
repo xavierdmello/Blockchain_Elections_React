@@ -51,7 +51,12 @@
 }
 .nav-button {
   white-space: nowrap;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: start;
 }
+
 .nav-button,
 .overflow_menu {
   /* Hack to prevent clipping of box shadow */

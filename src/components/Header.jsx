@@ -30,16 +30,16 @@ export default function Header({ handleClick }) {
     };
 
     let element = (
-      <b className="nav-button" id={key} key={key} style={style} onClick={button.onClick}>
-        {button.text}
-      </b>
+      <button className="nav-button" id={key} key={key} style={style} onClick={button.onClick}>
+        <b>{button.text}</b>
+      </button>
     );
     navButtonElements.push(element);
     if (!button.visible) {
       element = (
-        <b className="nav-button" id={key} key={key} onClick={button.onClick}>
-          {button.text}
-        </b>
+        <button className="nav-button" id={key} key={key} onClick={button.onClick}>
+          <b>{button.text}</b>
+        </button>
       );
       overflowElements.push(element);
     }
