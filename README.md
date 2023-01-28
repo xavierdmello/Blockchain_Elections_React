@@ -13,6 +13,5 @@ TODO:
 - red/green status lights for elections (green: open, red: closed)
 - styling for run/manage/create page
 - vote: sort candidates, add rank too
-- modularize election title header component
-- change header buttons from b to button
+
 
